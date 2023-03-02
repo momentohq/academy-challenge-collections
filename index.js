@@ -16,7 +16,12 @@ const { melbourneZooAnimals, getAllAnimalSpecies } = require('./helpers/animals'
  * 1. Create a collection that stores the unique animal species from the `melbourneZooAnimals` array
  * 2. Add the baby wombat to the front of the `babyAnimal` list cache item
  * 3. Update the name of the kangaroo from 'Jace' to 'Jack'
+ * 
+ * Before you get started, please replace the `username` and `email` placeholders below with your information
  */
+
+const username = "USERNAME";
+const email = "EMAIL";
 
 async function runChallenge() {
   const momento = await getMomentoClient(melbourneZooAnimals);
@@ -26,7 +31,7 @@ async function runChallenge() {
   await objectiveTwo(momento);
   await objectiveThree(momento);
 
-  const result = await validateAnswers();
+  const result = await validateAnswers(username, email);
   console.log(result);
 }
 
