@@ -1,6 +1,6 @@
 const axios = require('axios').default;
 
-exports.validateAnswers = async (username) => {
+exports.validateAnswers = async () => {
   const config = {
     method: 'POST',
     baseURL: 'https://oql6o4witl.execute-api.us-east-1.amazonaws.com/dev/challenges/collections',

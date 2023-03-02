@@ -17,11 +17,11 @@ There are three objectives to complete in this challenge with varying degrees of
 
 **Objective 1**
 
-Create a collection that stores the unique animal breeds from the `melbourneZooAnimals` array
+Create a collection that stores the unique animal species from the `melbourneZooAnimals` array
 
 *Description*
 
-You are provided with an array of animal breeds, but it contains duplicates! We want to see a list of unique animals on display at the Melbourne Zoo. You need to figure out which data type is the right one to use and add all the provided values to it. 
+You are provided with an array of animal species, but it contains duplicates! We want to see a list of unique animals on display at the Melbourne Zoo. You need to figure out which data type is the right one to use and add all the provided values to it. 
 
 *Your task*
 
@@ -29,9 +29,9 @@ Comment out the line that best fits the victory conditions below and fill in the
 
 *Victory conditions*
 
-* You create a collection item in the `animal` cache with the name `breeds`.
-* The `breeds` cache item is the correct collection data type (set, list, or dictionary).
-* The `breeds` cache item has only the distinct animal breeds as elements. There are no duplicates.
+* You create a collection item in the `animal` cache with the name `species`.
+* The `species` cache item is the correct collection data type (set, list, or dictionary).
+* The `species` cache item has only the distinct animal species as elements. There are no duplicates.
 
 **Objective 2**
 
@@ -62,7 +62,7 @@ Below is what the *kangaroo* object looks like:
  ```json
 {
   "id": "2",
-  "breed": "kangaroo",
+  "species": "kangaroo",
   "name": "Jace",
   "maturity": "Juvenile"
 }

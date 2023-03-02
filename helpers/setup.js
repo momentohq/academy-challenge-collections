@@ -18,7 +18,7 @@ const initializeCache = async (momento, data) => {
   await momento.deleteCache('animal');
   await momento.createCache('animal');
 
-  const babyAnimals = data.filter(d => d.maturity == 'Baby' && d.breed != 'wombat').map(d => JSON.stringify(d));
+  const babyAnimals = data.filter(d => d.maturity == 'Baby' && d.species != 'wombat').map(d => JSON.stringify(d));
   await momento.listConcatenateFront('animal', 'babies', babyAnimals);
 
   for(const animal of data){

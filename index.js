@@ -1,7 +1,7 @@
 const { SimpleCacheClient } = require('@gomomento/sdk');
 const { getMomentoClient } = require('./helpers/setup');
 const { validateAnswers } = require('./helpers/validator');
-const { melbourneZooAnimals, getAllAnimalBreeds } = require('./helpers/animals');
+const { melbourneZooAnimals, getAllAnimalSpecies } = require('./helpers/animals');
 
 /**
  * Welcome to the collection data type challenge! In Momento Serverless Cache, we do more than simple 
@@ -13,7 +13,7 @@ const { melbourneZooAnimals, getAllAnimalBreeds } = require('./helpers/animals')
  * In this challenge, you will prove your knowledge of how the Node.js Momento SDK works with the
  * different types of collections. Below are the tasks you must complete to pass the challenge.
  *  
- * 1. Create a collection that stores the unique animal breeds from the `melbourneZooAnimals` array
+ * 1. Create a collection that stores the unique animal species from the `melbourneZooAnimals` array
  * 2. Add the baby wombat to the front of the `babyAnimal` list cache item
  * 3. Update the name of the kangaroo from 'Jace' to 'Jack'
  */
@@ -31,9 +31,9 @@ async function runChallenge() {
 }
 
 /**
- * Objective - Create a collection that stores the unique animal breeds from the `melbourneZooAnimals` array
+ * Objective - Create a collection that stores the unique animal species from the `melbourneZooAnimals` array
  * 
- * You are provided with an array of animal breeds, but it contains duplicates! We want to see a list of unique animals
+ * You are provided with an array of animal species, but it contains duplicates! We want to see a list of unique animals
  * on display at the Melbourne Zoo. You need to figure out which data type is the right one to use and add all the provided values
  * to it. 
  * 
@@ -41,14 +41,14 @@ async function runChallenge() {
  * Comment out the line that best fits the victory conditions below and fill in the placeholders with the correct values
  * 
  * **Victory conditions**
- * * You create a collection item in the `animal` cache with the name `breeds`
- * * The `breeds` cache item is the correct collection data type (set, list, or dictionary)
- * * The `breeds` cache item has only the distinct animal breeds as elements. There are no duplicates.
+ * * You create a collection item in the `animal` cache with the name `species`
+ * * The `species` cache item is the correct collection data type (set, list, or dictionary)
+ * * The `species` cache item has only the distinct animal species as elements. There are no duplicates.
  * 
  * @param {SimpleCacheClient} momento - Initialized SimpleCacheClient
  */
 async function objectiveOne(momento) {
-  const breeds = getAllAnimalBreeds();
+  const species = getAllAnimalSpecies();
 
   // await momento.setAddElements('animal', << item name >>, << values >>);
   // await momento.listConcatenateBack('animal', << item name >>, << values >>);
@@ -73,7 +73,7 @@ async function objectiveOne(momento) {
  * @param {SimpleCacheClient} momento - Initialized SimpleCacheClient
  */
 async function objectiveTwo(momento) {
-  const wombat = melbourneZooAnimals.find(animal => animal.breed == 'wombat' && animal.maturity == 'Baby');
+  const wombat = melbourneZooAnimals.find(animal => animal.species == 'wombat' && animal.maturity == 'Baby');
 
   // await momento.listPopFront('animal', 'babyAnimal');
   // await momento.listPushFront('animal', 'babyAnimal', << value >> );
@@ -93,7 +93,7 @@ async function objectiveTwo(momento) {
  * ```
  * {
  *   "id": "2",
- *   "breed": "kangaroo",
+ *   "species": "kangaroo",
  *   "name": "Jace",
  *   "maturity": "Juvenile"
  * }
