@@ -21,7 +21,7 @@ const { melbourneZooAnimals, getAllAnimalSpecies } = require('./helpers/animals'
  */
 
 async function runChallenge() {
-  const momento = await getMomentoClient(melbourneZooAnimals);
+  const momento = await getMomentoClient();
 
   // Press f12 on the function names below to jump straight to the code and objective details
   await objectiveOne(momento);

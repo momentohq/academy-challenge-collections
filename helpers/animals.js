@@ -3,7 +3,7 @@ exports.melbourneZooAnimals = [
     id: '1',
     species: 'koala',
     name: 'Ko',
-    maturity: 'Adult'
+    maturity: 'Adult'    
   },
   {
     id: '2',
@@ -28,6 +28,29 @@ exports.melbourneZooAnimals = [
     species: 'platypus',
     name: 'Stella',
     maturity: 'Baby'
+  }
+];
+
+exports.donations = [
+  {
+    amount: 101,
+    name: 'Olivia'
+  },
+  {
+    amount: 43,
+    name: 'Adelaide'
+  },
+  {
+    amount: 66,
+    name: 'Stella'
+  },
+  {
+    amount: 85,
+    name: 'Ko'
+  },
+  {
+    amount: 10,
+    name: 'Jack'
   }
 ];
 
