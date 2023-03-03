@@ -1,5 +1,7 @@
 # Booth Instructions
 
+**Event name:** *serverless-anz*
+
 Momento employees, please follow the steps outlined below when running the booth.
 
 1. Create a `.env` file in the root directory with a value `MOMENTO_AUTH_TOKEN` and **your Momento auth token**
