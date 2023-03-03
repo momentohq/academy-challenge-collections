@@ -76,6 +76,25 @@ Comment out the line that best fits the victory conditions below and fill in the
 
 * The `name` field of the kangaroo item in the `animal` cache is 'Jack'
 
+**Objective 4**
+
+Increase the total amount donated to *Ko the koala by $95.50*.
+
+*Description*
+
+The zoo has begun to collect donations from patrons for specific animals. To encourage donations, the staff have decided to show a leaderboard of the animal names with the total amount donated next to them. This way, patrons who think the specific animals deserve more appreciation can donate to their cause. A donation of $95.50 came in for Ko the koala and the numbers need to be updated.
+
+Leaderboards are handled automatically with `sorted sets` in Momento Serverless Sache. The zoo staff has set up a `sorted set` cache item with the name `donations` to track the total amount donated (score) for animals. They saved the animal's name as the value in the cache.
+
+*Your task*
+
+Add 95.50 to the score of Ko the koala
+
+*Victory Conditions
+
+* The `donations` cache item has been updated
+* The `Ko` element in the cache item had the score increased by 95.5
+
 ## Leaderboard
 
 Are you ready to get excited? We have a daily leaderboard for this challenge! You are scored on how many objectives you complete and the number of attempts it takes you. The more objectives you complete successfully, the higher your score. The more attempts you make, the lower your score. To say it in developer lingo, the leaderboard ranks you by `completed objectives DESC then by number of attempts ASC`.
