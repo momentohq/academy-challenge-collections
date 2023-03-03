@@ -1,9 +1,10 @@
 const axios = require('axios').default;
+const challengeKey = 'collections';
 
 exports.validateAnswers = async (username, email) => {
   const config = {
     method: 'POST',
-    baseURL: 'https://oql6o4witl.execute-api.us-east-1.amazonaws.com/dev/challenges/collections',
+    baseURL: `https://oql6o4witl.execute-api.us-east-1.amazonaws.com/dev/challenges/${challengeKey}`,
     body: {},
     headers: {
       Authorization: `Bearer ${process.env.MOMENTO_AUTH_TOKEN}`,
