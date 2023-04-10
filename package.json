@@ -19,7 +19,7 @@
   "author": "Momento, Inc",
   "homepage": "https://github.com/momentohq/academy-challenge-collections#readme",
   "dependencies": {
-    "@gomomento/sdk": "^1.1.0",
+    "@gomomento/sdk": "^1.8.2",
     "axios": "^1.3.4",
     "dotenv": "^16.0.3"
   }

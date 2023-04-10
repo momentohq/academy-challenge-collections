@@ -1,10 +1,10 @@
-const { SimpleCacheClient } = require('@gomomento/sdk');
-const { getMomentoClient } = require('./helpers/setup');
+const { CacheClient } = require('@gomomento/sdk');
+const { getMomentoClient, CACHE_NAME } = require('./helpers/setup');
 const { validateAnswers } = require('./helpers/validator');
 const { melbourneZooAnimals, getAllAnimalSpecies } = require('./helpers/animals');
 
 /**
- * Welcome to the collection data type challenge! In Momento Serverless Cache, we do more than simple 
+ * Welcome to the collection data type challenge! In Momento Cache, we do more than simple 
  * gets and sets of your data. We can cache different types of collections!
  * * Sets - An unordered array of unique elements
  * * Lists - An array that allows duplicate elements and remembers the order they were inserted
@@ -21,20 +21,20 @@ const { melbourneZooAnimals, getAllAnimalSpecies } = require('./helpers/animals'
  */
 
 async function runChallenge() {
-  const momento = await getMomentoClient();
+  const cacheClient = await getMomentoClient();
 
   // Press f12 on the function names below to jump straight to the code and objective details
-  await objectiveOne(momento);
-  await objectiveTwo(momento);
-  await objectiveThree(momento);
-  await objectiveFour(momento);
+  await objectiveOne(cacheClient);
+  await objectiveTwo(cacheClient);
+  await objectiveThree(cacheClient);
+  await objectiveFour(cacheClient);
 
   const result = await validateAnswers();
   console.log(result);
 }
 
 /**
- * There are currently six types of values you can store in Momento Serverless cache. Simple key/value pairs, scalar values,
+ * There are currently six types of values you can store in Momento cache. Simple key/value pairs, scalar values,
  * lists of ordered strings, sets of unique strings, dictionaries of field/value pairs, and ranked strings based on a score.
  * 
  * **Your task**
@@ -44,18 +44,19 @@ async function runChallenge() {
  * **Hints**
  * 
  * You are given a `species` array that contains duplicates in it
+ * The cache item name is 'species'
  * A list remembers the sequence elements were added to it
  * A set stores an unordered array of unique items
  * A dictionary is a field/value object store
  * 
- * @param {SimpleCacheClient} momento - Initialized SimpleCacheClient
+ * @param {CacheClient} cacheClient - Initialized SimpleCacheClient
  */
-async function objectiveOne(momento) {
+async function objectiveOne(cacheClient) {
   const species = getAllAnimalSpecies();
 
-  // await momento.listConcatenateBack('animal', << item name >>, << values >>);
-  // await momento.setAddElements('animal', << item name >>, << values >>);
-  // await momento.dictionarySetFields('animal', << item name >>, << values >>);
+  // await cacheClient.listConcatenateBack(CACHE_NAME, << item name >>, << values >>);
+  // await cacheClient.setAddElements(CACHE_NAME, << item name >>, << values >>);
+  // await cacheClient.dictionarySetFields(CACHE_NAME, << item name >>, << values >>);
 }
 
 /**
@@ -70,17 +71,17 @@ async function objectiveOne(momento) {
  * 
  * The value needs to be stored as a stringified JSON object, i.e. `JSON.stringify(object)`
  * 
- * @param {SimpleCacheClient} momento - Initialized SimpleCacheClient
+ * @param {CacheClient} cacheClient - Initialized SimpleCacheClient
  */
-async function objectiveTwo(momento) {
+async function objectiveTwo(cacheClient) {
   const wombat = melbourneZooAnimals.find(animal => animal.species == 'wombat' && animal.maturity == 'Baby');
 
-  // await momento.listPopFront('animal', 'babyAnimal');
-  // await momento.listPushFront('animal', 'babyAnimal', << value >>);
-  // await momento.listConcatenateFront('animal', 'babyAnimal', [<< value >>]);
-  // await momento.listPopBack('animal', 'babyAnimal');
-  // await momento.listPushBack('animal', 'babyAnimal', << value >>);
-  // await momento.listConcatenateBack('animal', 'babyAnimal', [<< value >>]);
+  // await cacheClient.listPopFront(CACHE_NAME, 'babyAnimal');
+  // await cacheClient.listPushFront(CACHE_NAME, 'babyAnimal', << value >>);
+  // await cacheClient.listConcatenateFront(CACHE_NAME, 'babyAnimal', [<< value >>]);
+  // await cacheClient.listPopBack(CACHE_NAME, 'babyAnimal');
+  // await cacheClient.listPushBack(CACHE_NAME, 'babyAnimal', << value >>);
+  // await cacheClient.listConcatenateBack(CACHE_NAME, 'babyAnimal', [<< value >>]);
 }
 
 /**
@@ -95,18 +96,18 @@ async function objectiveTwo(momento) {
  * 
  * The dictionary id is the id of the kangaroo
  * 
- * @param {SimpleCacheClient} momento - Initialized SimpleCacheClient
+ * @param {CacheClient} cacheClient - Initialized SimpleCacheClient
  */
-async function objectiveThree(momento) {
+async function objectiveThree(cacheClient) {
   const kangaroo = melbourneZooAnimals.find(animal => animal.id == '2');
 
-  // await momento.dictionaryFetch('animal', << dictionary id >>);
-  // await momento.dictionaryIncrement('animal', << dictionary id >>, 'name', 1);
-  // await momento.dictionarySetField('animal', << dictionary id >>, 'name', << value >>);
+  // await cacheClient.dictionaryFetch(CACHE_NAME, << dictionary id >>);
+  // await cacheClient.dictionaryIncrement(CACHE_NAME, << dictionary id >>, 'name', 1);
+  // await cacheClient.dictionarySetField(CACHE_NAME, << dictionary id >>, 'name', << value >>);
 }
 
 /**
- * Leaderboards are handled automatically with `sorted sets` in Momento Serverless Sache. The zoo staff has setup a `sorted set` cache 
+ * Leaderboards are handled automatically with `sorted sets` in Momento Cache. The zoo staff has setup a `sorted set` cache 
  * item with the name `donations` to track the total amount donated (score) for animals. They saved the animal's name as the value in the cache.
  *
  * **Your task**
@@ -118,13 +119,12 @@ async function objectiveThree(momento) {
  * Update the `donations` item in the `animals` cache
  * The `Ko` element in the cache item needs the score increased by 95.5
  *
- * @param {SimpleCacheClient} momento - Initialized SimpleCacheClient
+ * @param {CacheClient} cacheClient - Initialized SimpleCacheClient
  */
-async function objectiveFour(momento) {
-
-  // await momento.sortedSetPutElement('animal', << item name >>, 'Ko', << value >>);
-  // await momento.sortedSetFetchByScore('animal', << item name >>, { maxScore: << value >> } );
-  // await momento.sortedSetIncrement('animal', << item name >>, 'Ko', << value >>);
+async function objectiveFour(cacheClient) {
+  // await cacheClient.sortedSetPutElement(CACHE_NAME, << item name >>, 'Ko', << value >>);
+  // await cacheClient.sortedSetFetchByScore(CACHE_NAME, << item name >>, { maxScore: << value >> } );
+  // await cacheClient.sortedSetIncrement(CACHE_NAME, << item name >>, 'Ko', << value >>);
 }
 
 runChallenge();

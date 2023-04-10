@@ -84,7 +84,7 @@ Increase the total amount donated to *Ko the koala by $95.50*.
 
 The zoo has begun to collect donations from patrons for specific animals. To encourage donations, the staff have decided to show a leaderboard of the animal names with the total amount donated next to them. This way, patrons who think the specific animals deserve more appreciation can donate to their cause. A donation of $95.50 came in for Ko the koala and the numbers need to be updated.
 
-Leaderboards are handled automatically with `sorted sets` in Momento Serverless Sache. The zoo staff has set up a `sorted set` cache item with the name `donations` to track the total amount donated (score) for animals. They saved the animal's name as the value in the cache.
+Leaderboards are handled automatically with `sorted sets` in Momento Cache. The zoo staff has set up a `sorted set` cache item with the name `donations` to track the total amount donated (score) for animals. They saved the animal's name as the value in the cache.
 
 *Your task*
 
